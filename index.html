@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>System Import Chaining</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="systemjs-importmap">
+    {
+      "imports": {
+        "mod1": "/mod1.js",
+        "mod2": "/mod2.js"
+      }
+    }
+  </script>
+  <script src="https://unpkg.com/systemjs/dist/system.js"></script>
+</head>
+<body>
+  <script>
+    System.import('mod1').then(() => System.import('mod2')).then(mod2 => {
+      console.log('mod2', mod2)
+    })
+  </script>
+</body>
+</html>
